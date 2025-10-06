@@ -1,1 +1,1 @@
-# vpc-lattice
+# terraform-aws-vpc-lattice
