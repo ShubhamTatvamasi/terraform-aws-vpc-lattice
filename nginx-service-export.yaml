@@ -1,0 +1,10 @@
+apiVersion: application-networking.k8s.aws/v1alpha1
+kind: ServiceExport
+metadata:
+  name: nginx-green
+  annotations:
+    application-networking.k8s.aws/federation: "amazon-vpc-lattice"
+spec:
+  exportedPorts:
+  - port: 80
+    routeType: HTTP

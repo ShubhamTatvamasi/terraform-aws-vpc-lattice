@@ -1,0 +1,25 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: nginx-blue-green
+  namespace: default
+spec:
+  parentRefs:
+    - name: nginx-blue-green-sn
+      sectionName: http
+  hostnames:
+    - "aws.shubhamtatvamasi.com"
+  rules:
+    - backendRefs:
+        # Service from Cluster A
+        - name: nginx-blue
+          namespace: default
+          kind: Service
+          port: 80
+          weight: 50
+        # Service exported from Cluster B
+        - name: nginx-green
+          namespace: default
+          kind: ServiceImport
+          port: 80
+          weight: 50
