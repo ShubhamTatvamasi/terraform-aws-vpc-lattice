@@ -10,7 +10,8 @@ resource "aws_iam_role" "lattice_role" {
         Principal = {
           Federated = [
             module.eks_blue.oidc_provider_arn,
-            module.eks_green.oidc_provider_arn
+            module.eks_green.oidc_provider_arn,
+            module.eks_red.oidc_provider_arn
           ]
         },
         Action = "sts:AssumeRoleWithWebIdentity"

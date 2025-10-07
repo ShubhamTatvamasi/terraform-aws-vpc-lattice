@@ -16,10 +16,16 @@ spec:
           namespace: default
           kind: Service
           port: 80
-          weight: 50
+          weight: 30
         # Service exported from Cluster B
         - name: nginx-green
           namespace: default
           kind: ServiceImport
           port: 80
-          weight: 50
+          weight: 30
+        # Service exported from Cluster C
+        - name: nginx-red
+          namespace: default
+          kind: ServiceImport
+          port: 80
+          weight: 40
